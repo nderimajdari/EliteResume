@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elite Resume Is Coming Soon</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #05060c;
+      --ink: #f9fbff;
+      --muted: #b7c1d9;
+      --gold: #f8d26a;
+      --coral: #ff6b72;
+      --cyan: #49d7ff;
+      --violet: #8567ff;
+      --panel: rgba(255, 255, 255, 0.08);
+      --line: rgba(255, 255, 255, 0.18);
+      --shadow: rgba(0, 0, 0, 0.38);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+      overflow-x: hidden;
+      background:
+        linear-gradient(120deg, rgba(133, 103, 255, 0.28), transparent 28%),
+        linear-gradient(250deg, rgba(73, 215, 255, 0.22), transparent 31%),
+        radial-gradient(circle at 50% 15%, rgba(248, 210, 106, 0.2), transparent 24%),
+        var(--bg);
+      color: var(--ink);
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      content: "";
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(255, 255, 255, 0.85) 0 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(73, 215, 255, 0.5) 0 1px, transparent 1.5px);
+      background-position: 0 0, 35px 62px;
+      background-size: 120px 120px, 170px 170px;
+      mask-image: linear-gradient(to bottom, #000, transparent 78%);
+      opacity: 0.55;
+      animation: drift 18s linear infinite;
+    }
+
+    main {
+      position: relative;
+      width: min(1180px, calc(100% - 32px));
+      min-height: min(760px, calc(100vh - 32px));
+      display: grid;
+      align-items: center;
+      padding: clamp(24px, 5vw, 70px);
+    }
+
+    .aura {
+      position: absolute;
+      inset: clamp(12px, 2vw, 28px);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 34px 110px var(--shadow), inset 0 0 80px rgba(255, 255, 255, 0.05);
+      overflow: hidden;
+      backdrop-filter: blur(22px);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.13), transparent 38%),
+        linear-gradient(315deg, rgba(255, 255, 255, 0.08), transparent 42%),
+        rgba(8, 10, 20, 0.58);
+    }
+
+    .aura::before {
+      position: absolute;
+      inset: -40%;
+      content: "";
+      background:
+        conic-gradient(from 120deg, transparent, rgba(248, 210, 106, 0.28), transparent, rgba(73, 215, 255, 0.22), transparent);
+      animation: rotate 16s linear infinite;
+    }
+
+    .aura::after {
+      position: absolute;
+      inset: 1px;
+      content: "";
+      border-radius: 27px;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(255, 107, 114, 0.17), transparent 22%),
+        radial-gradient(circle at 20% 80%, rgba(73, 215, 255, 0.15), transparent 24%),
+        rgba(5, 6, 12, 0.72);
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: clamp(28px, 5vw, 56px);
+    }
+
+    .hero {
+      max-width: 900px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 36px;
+      height: 2px;
+      content: "";
+      border-radius: 999px;
+      background: currentColor;
+      box-shadow: 0 0 24px currentColor;
+    }
+
+    h1 {
+      max-width: 980px;
+      margin: 0;
+      font-size: clamp(3rem, 9vw, 7.8rem);
+      line-height: 0.9;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    h1 span {
+      display: block;
+      color: transparent;
+      background: linear-gradient(90deg, var(--gold), #fff2b4 36%, var(--cyan) 72%, #c6b7ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      filter: drop-shadow(0 16px 34px rgba(73, 215, 255, 0.16));
+    }
+
+    .subtitle {
+      max-width: 680px;
+      margin: 26px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.28rem);
+      line-height: 1.7;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(12px, 2vw, 22px);
+    }
+
+    .time-box {
+      position: relative;
+      min-height: 152px;
+      display: grid;
+      align-content: center;
+      padding: clamp(18px, 3vw, 28px);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.04)),
+        rgba(255, 255, 255, 0.06);
+      box-shadow: 0 22px 58px rgba(0, 0, 0, 0.25);
+    }
+
+    .time-box::after {
+      position: absolute;
+      right: -38px;
+      bottom: -46px;
+      width: 120px;
+      height: 120px;
+      content: "";
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(248, 210, 106, 0.35), transparent 68%);
+      filter: blur(2px);
+    }
+
+    .number {
+      display: block;
+      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      font-weight: 900;
+      line-height: 0.92;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .label {
+      display: block;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .launch-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .pulse {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .pulse::before {
+      width: 12px;
+      height: 12px;
+      content: "";
+      border-radius: 50%;
+      background: var(--coral);
+      box-shadow: 0 0 0 0 rgba(255, 107, 114, 0.72);
+      animation: pulse 1.5s ease-out infinite;
+    }
+
+    .rings {
+      position: absolute;
+      right: clamp(-120px, -8vw, -40px);
+      top: clamp(-130px, -9vw, -50px);
+      width: clamp(280px, 42vw, 620px);
+      aspect-ratio: 1;
+      border: 1px solid rgba(248, 210, 106, 0.24);
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    .rings::before,
+    .rings::after {
+      position: absolute;
+      inset: 13%;
+      content: "";
+      border: 1px solid rgba(73, 215, 255, 0.22);
+      border-radius: inherit;
+    }
+
+    .rings::after {
+      inset: 28%;
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    @keyframes drift {
+      to {
+        background-position: 120px 120px, 205px 232px;
+      }
+    }
+
+    @keyframes rotate {
+      to {
+        transform: rotate(1turn);
+      }
+    }
+
+    @keyframes pulse {
+      100% {
+        box-shadow: 0 0 0 18px rgba(255, 107, 114, 0);
+      }
+    }
+
+    @media (max-width: 780px) {
+      main {
+        width: min(100% - 20px, 620px);
+        min-height: auto;
+        padding: 42px 18px;
+      }
+
+      .aura {
+        inset: 0;
+        border-radius: 22px;
+      }
+
+      .aura::after {
+        border-radius: 21px;
+      }
+
+      .countdown {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .time-box {
+        min-height: 128px;
+      }
+
+      .launch-line {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .countdown {
+        gap: 10px;
+      }
+
+      .time-box {
+        min-height: 112px;
+        padding: 16px;
+      }
+
+      .label {
+        font-size: 0.65rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="aura" aria-hidden="true"></div>
+    <div class="rings" aria-hidden="true"></div>
+
+    <section class="content" aria-labelledby="page-title">
+      <div class="hero">
+        <p class="eyebrow">Coming Soon</p>
+        <h1 id="page-title">Elite Resume <span>is coming soon.</span></h1>
+        <p class="subtitle">
+          Elite Resume is getting ready for launch. On May 15 at 12:00, we open the doors to a polished,
+          fast experience built to help every resume make a powerful first impression.
+        </p>
+      </div>
+
+      <div class="countdown" role="timer" aria-label="Countdown to launch">
+        <div class="time-box">
+          <span class="number" id="days">07</span>
+          <span class="label">Days</span>
+        </div>
+        <div class="time-box">
+          <span class="number" id="hours">00</span>
+          <span class="label">Hours</span>
+        </div>
+        <div class="time-box">
+          <span class="number" id="minutes">00</span>
+          <span class="label">Minutes</span>
+        </div>
+        <div class="time-box">
+          <span class="number" id="seconds">00</span>
+          <span class="label">Seconds</span>
+        </div>
+      </div>
+
+      <div class="launch-line">
+        <span class="pulse">Launch in progress</span>
+        <span id="launch-date">Calculating launch date...</span>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const launchAt = new Date("2026-05-15T12:00:00+02:00").getTime();
+
+    const fields = {
+      days: document.getElementById("days"),
+      hours: document.getElementById("hours"),
+      minutes: document.getElementById("minutes"),
+      seconds: document.getElementById("seconds")
+    };
+
+    const launchDate = document.getElementById("launch-date");
+    const formatter = new Intl.DateTimeFormat("en-US", {
+      weekday: "long",
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+
+    launchDate.textContent = `Live on ${formatter.format(new Date(launchAt))}`;
+
+    function pad(value) {
+      return String(value).padStart(2, "0");
+    }
+
+    function updateCountdown() {
+      const remaining = Math.max(0, launchAt - Date.now());
+      const totalSeconds = Math.floor(remaining / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      fields.days.textContent = pad(days);
+      fields.hours.textContent = pad(hours);
+      fields.minutes.textContent = pad(minutes);
+      fields.seconds.textContent = pad(seconds);
+
+      if (remaining === 0) {
+        document.querySelector(".pulse").textContent = "We are live";
+        clearInterval(timer);
+      }
+    }
+
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>

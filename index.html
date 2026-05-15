@@ -1,420 +1,691 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resume Elite Is Coming Soon</title>
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #05060c;
-      --ink: #f9fbff;
-      --muted: #b7c1d9;
-      --gold: #f8d26a;
-      --coral: #ff6b72;
-      --cyan: #49d7ff;
-      --violet: #8567ff;
-      --panel: rgba(255, 255, 255, 0.08);
-      --line: rgba(255, 255, 255, 0.18);
-      --shadow: rgba(0, 0, 0, 0.38);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
 
-    * {
-      box-sizing: border-box;
-    }
+  <title>
+    Free Resume Builder Online | ATS-Friendly CV Templates & PDF Export
+  </title>
 
-    html,
-    body {
-      min-height: 100%;
-      margin: 0;
-    }
+  <meta
+    name="description"
+    content="Create a professional ATS-friendly resume in minutes with ResumeElite. Choose modern CV templates, customize instantly, preview live, and download PDF resumes for free."
+  />
 
-    body {
-      display: grid;
-      place-items: center;
-      overflow-x: hidden;
-      background:
-        linear-gradient(120deg, rgba(133, 103, 255, 0.28), transparent 28%),
-        linear-gradient(250deg, rgba(73, 215, 255, 0.22), transparent 31%),
-        radial-gradient(circle at 50% 15%, rgba(248, 210, 106, 0.2), transparent 24%),
-        var(--bg);
-      color: var(--ink);
-    }
+  <meta
+    name="keywords"
+    content="free resume builder, ATS resume builder, CV maker online, professional resume templates, resume creator, online CV builder, PDF resume builder, modern CV templates"
+  />
 
-    body::before {
-      position: fixed;
-      inset: 0;
-      content: "";
-      pointer-events: none;
-      background-image:
-        radial-gradient(circle, rgba(255, 255, 255, 0.85) 0 1px, transparent 1.5px),
-        radial-gradient(circle, rgba(73, 215, 255, 0.5) 0 1px, transparent 1.5px);
-      background-position: 0 0, 35px 62px;
-      background-size: 120px 120px, 170px 170px;
-      mask-image: linear-gradient(to bottom, #000, transparent 78%);
-      opacity: 0.55;
-      animation: drift 18s linear infinite;
-    }
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="ResumeElite" />
+  <meta name="theme-color" content="#0f172a" />
 
-    main {
-      position: relative;
-      width: min(1180px, calc(100% - 32px));
-      min-height: min(760px, calc(100vh - 32px));
-      display: grid;
-      align-items: center;
-      padding: clamp(24px, 5vw, 70px);
-    }
+  <link rel="canonical" href="https://resume-elite.com/" />
 
-    .aura {
-      position: absolute;
-      inset: clamp(12px, 2vw, 28px);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      box-shadow: 0 34px 110px var(--shadow), inset 0 0 80px rgba(255, 255, 255, 0.05);
-      overflow: hidden;
-      backdrop-filter: blur(22px);
-      background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.13), transparent 38%),
-        linear-gradient(315deg, rgba(255, 255, 255, 0.08), transparent 42%),
-        rgba(8, 10, 20, 0.58);
-    }
+  <!-- Open Graph -->
+  <meta
+    property="og:title"
+    content="ResumeElite - Free ATS-Friendly Resume Builder"
+  />
 
-    .aura::before {
-      position: absolute;
-      inset: -40%;
-      content: "";
-      background:
-        conic-gradient(from 120deg, transparent, rgba(248, 210, 106, 0.28), transparent, rgba(73, 215, 255, 0.22), transparent);
-      animation: rotate 16s linear infinite;
-    }
+  <meta
+    property="og:description"
+    content="Build professional resumes with modern templates, live preview, and instant PDF export."
+  />
 
-    .aura::after {
-      position: absolute;
-      inset: 1px;
-      content: "";
-      border-radius: 27px;
-      background:
-        radial-gradient(circle at 80% 20%, rgba(255, 107, 114, 0.17), transparent 22%),
-        radial-gradient(circle at 20% 80%, rgba(73, 215, 255, 0.15), transparent 24%),
-        rgba(5, 6, 12, 0.72);
-    }
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://resume-elite.com/" />
 
-    .content {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      gap: clamp(28px, 5vw, 56px);
-    }
+  <meta
+    property="og:image"
+    content="https://resume-elite.com/og-image.png"
+  />
 
-    .hero {
-      max-width: 900px;
-    }
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin: 0 0 18px;
-      color: var(--gold);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
+  <meta
+    name="twitter:title"
+    content="ResumeElite - Professional Resume Builder"
+  />
 
-    .eyebrow::before {
-      width: 36px;
-      height: 2px;
-      content: "";
-      border-radius: 999px;
-      background: currentColor;
-      box-shadow: 0 0 24px currentColor;
-    }
+  <meta
+    name="twitter:description"
+    content="Create ATS-friendly resumes online with modern templates and PDF export."
+  />
 
-    h1 {
-      max-width: 980px;
-      margin: 0;
-      font-size: clamp(3rem, 9vw, 7.8rem);
-      line-height: 0.9;
-      letter-spacing: 0;
-      text-wrap: balance;
-    }
+  <meta
+    name="twitter:image"
+    content="https://resume-elite.com/og-image.png"
+  />
 
-    h1 span {
-      display: block;
-      color: transparent;
-      background: linear-gradient(90deg, var(--gold), #fff2b4 36%, var(--cyan) 72%, #c6b7ff);
-      background-clip: text;
-      -webkit-background-clip: text;
-      filter: drop-shadow(0 16px 34px rgba(73, 215, 255, 0.16));
-    }
 
-    .subtitle {
-      max-width: 680px;
-      margin: 26px 0 0;
-      color: var(--muted);
-      font-size: clamp(1rem, 2vw, 1.28rem);
-      line-height: 1.7;
-    }
 
-    .countdown {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: clamp(12px, 2vw, 22px);
-    }
-
-    .time-box {
-      position: relative;
-      min-height: 152px;
-      display: grid;
-      align-content: center;
-      padding: clamp(18px, 3vw, 28px);
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 8px;
-      background:
-        linear-gradient(160deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.04)),
-        rgba(255, 255, 255, 0.06);
-      box-shadow: 0 22px 58px rgba(0, 0, 0, 0.25);
-    }
-
-    .time-box::after {
-      position: absolute;
-      right: -38px;
-      bottom: -46px;
-      width: 120px;
-      height: 120px;
-      content: "";
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(248, 210, 106, 0.35), transparent 68%);
-      filter: blur(2px);
-    }
-
-    .number {
-      display: block;
-      font-size: clamp(2.5rem, 6vw, 5.5rem);
-      font-weight: 900;
-      line-height: 0.92;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .label {
-      display: block;
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .launch-line {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    .pulse {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--ink);
-      font-weight: 800;
-    }
-
-    .pulse::before {
-      width: 12px;
-      height: 12px;
-      content: "";
-      border-radius: 50%;
-      background: var(--coral);
-      box-shadow: 0 0 0 0 rgba(255, 107, 114, 0.72);
-      animation: pulse 1.5s ease-out infinite;
-    }
-
-    .rings {
-      position: absolute;
-      right: clamp(-120px, -8vw, -40px);
-      top: clamp(-130px, -9vw, -50px);
-      width: clamp(280px, 42vw, 620px);
-      aspect-ratio: 1;
-      border: 1px solid rgba(248, 210, 106, 0.24);
-      border-radius: 50%;
-      pointer-events: none;
-      opacity: 0.8;
-    }
-
-    .rings::before,
-    .rings::after {
-      position: absolute;
-      inset: 13%;
-      content: "";
-      border: 1px solid rgba(73, 215, 255, 0.22);
-      border-radius: inherit;
-    }
-
-    .rings::after {
-      inset: 28%;
-      border-color: rgba(255, 255, 255, 0.18);
-    }
-
-    @keyframes drift {
-      to {
-        background-position: 120px 120px, 205px 232px;
-      }
-    }
-
-    @keyframes rotate {
-      to {
-        transform: rotate(1turn);
-      }
-    }
-
-    @keyframes pulse {
-      100% {
-        box-shadow: 0 0 0 18px rgba(255, 107, 114, 0);
-      }
-    }
-
-    @media (max-width: 780px) {
-      main {
-        width: min(100% - 20px, 620px);
-        min-height: auto;
-        padding: 42px 18px;
-      }
-
-      .aura {
-        inset: 0;
-        border-radius: 22px;
-      }
-
-      .aura::after {
-        border-radius: 21px;
-      }
-
-      .countdown {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .time-box {
-        min-height: 128px;
-      }
-
-      .launch-line {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-    }
-
-    @media (max-width: 430px) {
-      .countdown {
-        gap: 10px;
-      }
-
-      .time-box {
-        min-height: 112px;
-        padding: 16px;
-      }
-
-      .label {
-        font-size: 0.65rem;
-      }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=homepage-redesign-20260515" />
 </head>
-<body>
-  <main>
-    <div class="aura" aria-hidden="true"></div>
-    <div class="rings" aria-hidden="true"></div>
 
-    <section class="content" aria-labelledby="page-title">
-      <div class="hero">
-        <p class="eyebrow">Coming Soon</p>
-        <h1 id="page-title">Resume Elite <span>is coming soon.</span></h1>
-        <p class="subtitle">
-          Elite Resume is getting ready for launch. On May 15 at 12:00, we open the doors to a polished,
-          fast experience built to help every resume make a powerful first impression.
-        </p>
+<body class="landing-page">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">RE</span>
+        <span class="logo-text">ResumeElite</span>
+      </a>
+      <div class="nav-links">
+        <a href="#templates">Templates</a>
+        <a href="#features">Features</a>
+        <a href="#process">How it works</a>
+        <a href="editor.html" class="btn-nav-cta">Open Builder</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Free resume builder for serious applications</div>
+      <h1 class="hero-title">Free Professional Resume Builder</h1>
+      <p class="hero-subtitle">Create a clean, ATS-friendly resume with polished templates, live editing, custom colors,
+        photo support, section control, and PDF export from one focused workspace.</p>
+      <div class="hero-checks">
+        <span>ATS-friendly structure</span>
+        <span>No signup required</span>
+        <span>Auto-saves locally</span>
+      </div>
+      <div class="hero-actions">
+        <a href="editor.html" class="btn-primary btn-xl" id="hero-start-btn">
+          <span>Build Your Resume</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="#templates" class="btn-ghost btn-xl">Browse Templates</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>20+</strong><span>Resume layouts</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><strong>Live</strong><span>Preview editor</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><strong>PDF</strong><span>Export Ready</span></div>
+      </div>
+      <div class="hero-trust">
+        <span>Built for</span>
+        <strong>job applications</strong>
+        <strong>internships</strong>
+        <strong>career moves</strong>
+      </div>
+    </div>
+    <!-- Hero Preview Mockup -->
+    <div class="hero-mockup">
+      <div class="hero-mini-panel hero-mini-panel-top">
+        <span>Resume score</span>
+        <strong>96%</strong>
+      </div>
+      <div class="mockup-browser">
+        <div class="mockup-floating-card">
+          <span class="floating-label">Template</span>
+          <strong>Professional</strong>
+        </div>
+        <div class="mockup-bar">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        </div>
+        <div class="mockup-content">
+          <div class="mock-resume classic-mock">
+            <div class="mock-header">
+              <div class="mock-avatar"></div>
+              <div>
+                <div class="mock-name-bar"></div>
+                <div class="mock-title-bar"></div>
+                <div class="mock-contact-row">
+                  <div class="mock-contact-item"></div>
+                  <div class="mock-contact-item"></div>
+                  <div class="mock-contact-item"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mock-section-title"></div>
+            <div class="mock-line w80"></div>
+            <div class="mock-line w60"></div>
+            <div class="mock-section-title"></div>
+            <div class="mock-line w90"></div>
+            <div class="mock-line w70"></div>
+            <div class="mock-line w50"></div>
+            <div class="mock-section-title"></div>
+            <div class="mock-skills">
+              <div class="mock-skill-tag"></div>
+              <div class="mock-skill-tag"></div>
+              <div class="mock-skill-tag"></div>
+              <div class="mock-skill-tag w-sm"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-mini-panel hero-mini-panel-bottom">
+        <span>Export</span>
+        <strong>PDF ready</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-label">Why it feels better</div>
+      <h2 class="section-title">Everything important stays in front of you</h2>
+      <p class="section-subtitle">ResumeElite keeps writing, layout, template choice, and export inside one calm editing
+        flow so you can finish faster without fighting formatting.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">01</div>
+          <h3>Live Preview</h3>
+          <p>Write, reorder sections, and refine details while the resume updates immediately on the page.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">02</div>
+          <h3>Professional Templates</h3>
+          <p>Choose from classic, modern, executive, elegant, Europass, and other layouts built for different roles.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">03</div>
+          <h3>Controlled Styling</h3>
+          <p>Adjust template, accent color, photo, and visible sections without fighting the document formatting.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">04</div>
+          <h3>PDF Export</h3>
+          <p>Download a clean PDF version when your resume is ready to send, print, or archive.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">05</div>
+          <h3>Section Control</h3>
+          <p>Add the content that matters for your profile and hide sections that do not help your application.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">06</div>
+          <h3>Auto-Save</h3>
+          <p>Your work is saved locally in your browser so you can return and continue editing later.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="process-section" id="process">
+    <div class="container process-inner">
+      <div class="process-copy">
+        <div class="section-label">How it works</div>
+        <h2 class="section-title">From blank page to polished PDF in minutes</h2>
+      </div>
+      <div class="process-steps">
+        <div class="process-step">
+          <span>1</span>
+          <strong>Choose a template</strong>
+          <p>Start with a layout that matches your role, experience level, and preferred visual style.</p>
+        </div>
+        <div class="process-step">
+          <span>2</span>
+          <strong>Fill your details</strong>
+          <p>Add experience, education, skills, projects, languages, certifications, and custom sections.</p>
+        </div>
+        <div class="process-step">
+          <span>3</span>
+          <strong>Export the result</strong>
+          <p>Review the live preview and download a clean PDF when ready.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Templates Gallery -->
+  <section class="templates-section" id="templates">
+    <div class="container">
+      <div class="section-label">Templates</div>
+      <h2 class="section-title">Start with a design that already looks finished</h2>
+      <p class="section-subtitle">Pick a structure for the role, then adjust the details, colors, and sections in the
+        editor.</p>
+      <div class="templates-grid">
+
+        <div class="template-card" data-template="classic">
+          <div class="template-preview tp-classic">
+            <div class="tp-header tp-h-classic">
+              <div class="tp-avatar"></div>
+              <div class="tp-info">
+                <div class="tp-name"></div>
+                <div class="tp-role"></div>
+              </div>
+            </div>
+            <div class="tp-body">
+              <div class="tp-sec-title tp-st-blue"></div>
+              <div class="tp-line w75"></div>
+              <div class="tp-line w55"></div>
+              <div class="tp-sec-title tp-st-blue"></div>
+              <div class="tp-line w85"></div>
+              <div class="tp-line w65"></div>
+              <div class="tp-tags">
+                <div class="tp-tag"></div>
+                <div class="tp-tag"></div>
+                <div class="tp-tag"></div>
+              </div>
+            </div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Classic</span>
+            <span class="template-badge free">Free</span>
+          </div>
+          <a href="editor.html?template=classic" class="btn-template">Use Template →</a>
+        </div>
+
+        <div class="template-card featured" data-template="modern">
+          <div class="template-preview tp-modern">
+            <div class="tp-sidebar"></div>
+            <div class="tp-main-col">
+              <div class="tp-name-mod"></div>
+              <div class="tp-role-mod"></div>
+              <div class="tp-sec-title tp-st-accent"></div>
+              <div class="tp-line w80"></div>
+              <div class="tp-line w60"></div>
+              <div class="tp-sec-title tp-st-accent"></div>
+              <div class="tp-line w85"></div>
+              <div class="tp-line w50"></div>
+            </div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Modern</span>
+            <span class="template-badge popular">Popular</span>
+          </div>
+          <a href="editor.html?template=modern" class="btn-template">Use Template →</a>
+        </div>
+
+        <div class="template-card" data-template="creative">
+          <div class="template-preview tp-creative">
+            <div class="tp-creative-header">
+              <div class="tp-name-cr"></div>
+              <div class="tp-role-cr"></div>
+            </div>
+            <div class="tp-body">
+              <div class="tp-sec-title tp-st-cr"></div>
+              <div class="tp-line w70"></div>
+              <div class="tp-line w55"></div>
+              <div class="tp-sec-title tp-st-cr"></div>
+              <div class="tp-line w80"></div>
+              <div class="tp-line w60"></div>
+            </div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Creative</span>
+            <span class="template-badge free">Free</span>
+          </div>
+          <a href="editor.html?template=creative" class="btn-template">Use Template →</a>
+        </div>
+
+        <div class="template-card" data-template="minimal">
+          <div class="template-preview tp-minimal">
+            <div class="tp-name-min"></div>
+            <div class="tp-divider-min"></div>
+            <div class="tp-role-min"></div>
+            <div class="tp-sec-title tp-st-min"></div>
+            <div class="tp-line w75"></div>
+            <div class="tp-line w55"></div>
+            <div class="tp-sec-title tp-st-min"></div>
+            <div class="tp-line w80"></div>
+            <div class="tp-line w50"></div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Minimal</span>
+            <span class="template-badge free">Free</span>
+          </div>
+          <a href="editor.html?template=minimal" class="btn-template">Use Template →</a>
+        </div>
+
+        <div class="template-card" data-template="executive">
+          <div class="template-preview tp-executive">
+            <div class="tp-exec-top">
+              <div class="tp-name-exec"></div>
+              <div class="tp-role-exec"></div>
+              <div class="tp-exec-line"></div>
+            </div>
+            <div class="tp-two-col">
+              <div class="tp-left-col">
+                <div class="tp-sec-title tp-st-exec"></div>
+                <div class="tp-line w80"></div>
+                <div class="tp-line w60"></div>
+              </div>
+              <div class="tp-right-col">
+                <div class="tp-sec-title tp-st-exec"></div>
+                <div class="tp-line w75"></div>
+                <div class="tp-line w55"></div>
+              </div>
+            </div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Executive</span>
+            <span class="template-badge free">Free</span>
+          </div>
+          <a href="editor.html?template=executive" class="btn-template">Use Template →</a>
+        </div>
+
+        <div class="template-card" data-template="tech">
+          <div class="template-preview tp-tech">
+            <div class="tp-tech-header">
+              <div class="tp-tech-name"></div>
+              <div class="tp-tech-role"></div>
+              <div class="tp-tech-tags">
+                <div class="tp-tech-tag"></div>
+                <div class="tp-tech-tag"></div>
+                <div class="tp-tech-tag"></div>
+              </div>
+            </div>
+            <div class="tp-body tp-tech-body">
+              <div class="tp-sec-title tp-st-tech"></div>
+              <div class="tp-line w85"></div>
+              <div class="tp-line w65"></div>
+              <div class="tp-sec-title tp-st-tech"></div>
+              <div class="tp-line w70"></div>
+              <div class="tp-line w50"></div>
+            </div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Tech</span>
+            <span class="template-badge free">Free</span>
+          </div>
+          <a href="editor.html?template=tech" class="btn-template">Use Template →</a>
+        </div>
+
+        <div class="template-card" data-template="elegant">
+          <div class="template-preview tp-elegant">
+            <div class="tp-elegant-header">
+              <div class="tp-elegant-avatar"></div>
+              <div>
+                <div class="tp-elegant-name"></div>
+                <div class="tp-elegant-role"></div>
+              </div>
+            </div>
+            <div class="tp-body">
+              <div class="tp-sec-title tp-st-el"></div>
+              <div class="tp-line w80"></div>
+              <div class="tp-line w60"></div>
+              <div class="tp-sec-title tp-st-el"></div>
+              <div class="tp-line w75"></div>
+              <div class="tp-line w55"></div>
+            </div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Elegant</span>
+            <span class="template-badge free">Free</span>
+          </div>
+          <a href="editor.html?template=elegant" class="btn-template">Use Template →</a>
+        </div>
+
+        <div class="template-card featured" data-template="bold">
+          <div class="template-preview tp-bold">
+            <div class="tp-bold-sidebar"></div>
+            <div class="tp-bold-main">
+              <div class="tp-bold-name"></div>
+              <div class="tp-bold-role"></div>
+              <div class="tp-sec-title tp-st-bold"></div>
+              <div class="tp-line w85"></div>
+              <div class="tp-line w70"></div>
+            </div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Bold</span>
+            <span class="template-badge popular">Popular</span>
+          </div>
+          <a href="editor.html?template=bold" class="btn-template">Use Template →</a>
+        </div>
+
+        <div class="template-card" data-template="startup">
+          <div class="template-preview tp-startup">
+            <div class="tp-startup-header">
+              <div class="tp-startup-name"></div>
+              <div class="tp-startup-role"></div>
+            </div>
+            <div class="tp-body tp-startup-body">
+              <div class="tp-startup-box">
+                <div class="tp-sec-title tp-st-start"></div>
+                <div class="tp-line w80"></div>
+              </div>
+              <div class="tp-startup-box">
+                <div class="tp-sec-title tp-st-start"></div>
+                <div class="tp-line w75"></div>
+              </div>
+            </div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Startup</span>
+            <span class="template-badge free">Free</span>
+          </div>
+          <a href="editor.html?template=startup" class="btn-template">Use Template →</a>
+        </div>
+
+        <div class="template-card" data-template="corporate">
+          <div class="template-preview tp-corporate">
+            <div class="tp-corp-header">
+              <div class="tp-corp-name"></div>
+              <div class="tp-corp-role"></div>
+            </div>
+            <div class="tp-corp-two-col">
+              <div class="tp-corp-left">
+                <div class="tp-sec-title tp-st-corp"></div>
+                <div class="tp-line w80"></div>
+                <div class="tp-line w60"></div>
+              </div>
+              <div class="tp-corp-right">
+                <div class="tp-sec-title tp-st-corp"></div>
+                <div class="tp-line w70"></div>
+              </div>
+            </div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Corporate</span>
+            <span class="template-badge free">Free</span>
+          </div>
+          <a href="editor.html?template=corporate" class="btn-template">Use Template →</a>
+        </div>
+
+        <div class="template-card" data-template="professional">
+          <div class="template-preview tp-professional">
+            <div class="tp-prof-header">
+              <div class="tp-prof-name"></div>
+              <div class="tp-prof-role"></div>
+              <div class="tp-prof-avatar"></div>
+            </div>
+            <div class="tp-prof-body">
+              <div class="tp-prof-row">
+                <div class="tp-prof-label"></div>
+                <div class="tp-prof-main">
+                  <div class="tp-line w80"></div>
+                  <div class="tp-line w60"></div>
+                </div>
+              </div>
+              <div class="tp-prof-row">
+                <div class="tp-prof-label"></div>
+                <div class="tp-prof-main">
+                  <div class="tp-line w70"></div>
+                  <div class="tp-line w50"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Professional</span>
+            <span class="template-badge free">Free</span>
+          </div>
+          <a href="editor.html?template=professional" class="btn-template">Use Template →</a>
+        </div>
+
+        <div class="template-card featured" data-template="modern-dark">
+          <div class="template-preview tp-modern-dark">
+            <div class="tp-md-header">
+              <div class="tp-md-name"></div>
+              <div class="tp-md-role"></div>
+            </div>
+            <div class="tp-md-body">
+              <div class="tp-md-left">
+                <div class="tp-sec-title tp-st-yellow"></div>
+                <div class="tp-line w80"></div>
+                <div class="tp-line w60"></div>
+              </div>
+              <div class="tp-md-right">
+                <div class="tp-sec-title tp-st-yellow"></div>
+                <div class="tp-md-skill-dots"></div>
+                <div class="tp-md-skill-dots"></div>
+              </div>
+            </div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Modern Dark</span>
+            <span class="template-badge premium">Premium</span>
+          </div>
+          <a href="editor.html?template=modern-dark" class="btn-template">Use Template →</a>
+        </div>
+
+        <div class="template-card" data-template="nordic">
+          <div class="template-preview tp-nordic">
+            <div class="tp-new-head"></div>
+            <div class="tp-new-row wide"></div>
+            <div class="tp-new-grid"></div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Nordic</span>
+            <span class="template-badge free">New</span>
+          </div>
+          <a href="editor.html?template=nordic" class="btn-template">Use Template →</a>
+        </div>
+
+        <div class="template-card featured" data-template="timeline">
+          <div class="template-preview tp-timeline-new">
+            <div class="tp-timeline-rail"></div>
+            <div class="tp-new-line"></div>
+            <div class="tp-new-line short"></div>
+            <div class="tp-new-line"></div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Timeline</span>
+            <span class="template-badge popular">New</span>
+          </div>
+          <a href="editor.html?template=timeline" class="btn-template">Use Template →</a>
+        </div>
+
+        <div class="template-card" data-template="mono">
+          <div class="template-preview tp-mono-new">
+            <div class="tp-mono-title"></div>
+            <div class="tp-mono-rule"></div>
+            <div class="tp-new-line"></div>
+            <div class="tp-new-line short"></div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Mono</span>
+            <span class="template-badge free">New</span>
+          </div>
+          <a href="editor.html?template=mono" class="btn-template">Use Template →</a>
+        </div>
+
+        <div class="template-card" data-template="compact">
+          <div class="template-preview tp-compact-new">
+            <div class="tp-new-head"></div>
+            <div class="tp-compact-lines"></div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Compact</span>
+            <span class="template-badge free">New</span>
+          </div>
+          <a href="editor.html?template=compact" class="btn-template">Use Template →</a>
+        </div>
+
+        <div class="template-card featured" data-template="portfolio">
+          <div class="template-preview tp-portfolio-new">
+            <div class="tp-new-side"></div>
+            <div class="tp-new-main"></div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Portfolio</span>
+            <span class="template-badge premium">New</span>
+          </div>
+          <a href="editor.html?template=portfolio" class="btn-template">Use Template →</a>
+        </div>
+
+        <div class="template-card" data-template="graduate">
+          <div class="template-preview tp-graduate-new">
+            <div class="tp-grad-title"></div>
+            <div class="tp-grad-rule"></div>
+            <div class="tp-new-line"></div>
+            <div class="tp-new-line short"></div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Graduate</span>
+            <span class="template-badge free">New</span>
+          </div>
+          <a href="editor.html?template=graduate" class="btn-template">Use Template →</a>
+        </div>
+
+        <div class="template-card" data-template="clean-sidebar">
+          <div class="template-preview tp-clean-sidebar-new">
+            <div class="tp-new-main"></div>
+            <div class="tp-new-side light"></div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Clean Sidebar</span>
+            <span class="template-badge free">New</span>
+          </div>
+          <a href="editor.html?template=clean-sidebar" class="btn-template">Use Template →</a>
+        </div>
+
+        <div class="template-card" data-template="editorial">
+          <div class="template-preview tp-editorial-new">
+            <div class="tp-editorial-label"></div>
+            <div class="tp-editorial-copy"></div>
+          </div>
+          <div class="template-info">
+            <span class="template-name">Editorial</span>
+            <span class="template-badge free">New</span>
+          </div>
+          <a href="editor.html?template=editorial" class="btn-template">Use Template →</a>
+        </div>
+
       </div>
 
-      <div class="countdown" role="timer" aria-label="Countdown to launch">
-        <div class="time-box">
-          <span class="number" id="days">07</span>
-          <span class="label">Days</span>
-        </div>
-        <div class="time-box">
-          <span class="number" id="hours">00</span>
-          <span class="label">Hours</span>
-        </div>
-        <div class="time-box">
-          <span class="number" id="minutes">00</span>
-          <span class="label">Minutes</span>
-        </div>
-        <div class="time-box">
-          <span class="number" id="seconds">00</span>
-          <span class="label">Seconds</span>
-        </div>
-      </div>
+    </div>
+  </section>
 
-      <div class="launch-line">
-        <span class="pulse">Launch in progress</span>
-        <span id="launch-date">Calculating launch date...</span>
-      </div>
-    </section>
-  </main>
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-glow"></div>
+    <div class="container cta-content">
+      <h2>Build a resume you can send with confidence.</h2>
+      <p>Open the builder, choose a template, tune the details, and export a polished PDF.</p>
+      <a href="editor.html" class="btn-primary btn-xl" id="cta-build-btn">
+        <span>Start Building</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </section>
 
-  <script>
-    const launchAt = new Date("2026-05-15T12:00:00+02:00").getTime();
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">RE</span>
+        <span class="logo-text">ResumeElite</span>
+      </a>
+      <p class="footer-copy">© 2026 ResumeElite. Professional resume builder.</p>
+    </div>
+  </footer>
 
-    const fields = {
-      days: document.getElementById("days"),
-      hours: document.getElementById("hours"),
-      minutes: document.getElementById("minutes"),
-      seconds: document.getElementById("seconds")
-    };
-
-    const launchDate = document.getElementById("launch-date");
-    const formatter = new Intl.DateTimeFormat("en-US", {
-      weekday: "long",
-      day: "2-digit",
-      month: "long",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit"
-    });
-
-    launchDate.textContent = `Live on ${formatter.format(new Date(launchAt))}`;
-
-    function pad(value) {
-      return String(value).padStart(2, "0");
-    }
-
-    function updateCountdown() {
-      const remaining = Math.max(0, launchAt - Date.now());
-      const totalSeconds = Math.floor(remaining / 1000);
-      const days = Math.floor(totalSeconds / 86400);
-      const hours = Math.floor((totalSeconds % 86400) / 3600);
-      const minutes = Math.floor((totalSeconds % 3600) / 60);
-      const seconds = totalSeconds % 60;
-
-      fields.days.textContent = pad(days);
-      fields.hours.textContent = pad(hours);
-      fields.minutes.textContent = pad(minutes);
-      fields.seconds.textContent = pad(seconds);
-
-      if (remaining === 0) {
-        document.querySelector(".pulse").textContent = "We are live";
-        clearInterval(timer);
-      }
-    }
-
-    updateCountdown();
-    const timer = setInterval(updateCountdown, 1000);
-  </script>
+  <script src="app.js"></script>
 </body>
+
 </html>
